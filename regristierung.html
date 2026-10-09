@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Registrierung einer Kleiderspende für eine ausgewählte Krisen-region."
+    >
+
+    <title>
+        Spende registrieren – KleiderHilfe
+    </title>
+
+    <!-- Bootstrap 5 als modernes CSS-Framework -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Eigene CSS-Datei -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container nav-container">
+
+        <!-- LOGO -->
+
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="KleiderHilfe Startseite"
+        >
+
+            <span
+                class="logo-icon"
+                aria-hidden="true"
+            >
+                ❤
+            </span>
+
+            <span>
+                KleiderHilfe
+            </span>
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <nav
+            class="navigation"
+            aria-label="Hauptnavigation"
+        >
+
+            <a href="index.html">
+                Startseite
+            </a>
+
+            <a href="index.html#ueber-uns">
+                Über uns
+            </a>
+
+            <a
+                href="registrierung.html"
+                class="nav-button active"
+                aria-current="page"
+            >
+                Spende registrieren
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="form-section">
+
+        <div class="container">
+
+            <!-- ÜBERSCHRIFT -->
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Kleiderspende
+                </span>
+
+                <h1>
+                    Spende registrieren
+                </h1>
+
+                <p>
+
+                    Fülle das Formular aus und entscheide selbst,
+                    wohin deine Kleiderspende geschickt werden soll.
+
+                </p>
+
+            </div>
+
+
+            <form
+                id="spendenForm"
+                class="donation-form"
+                novalidate
+            >
+
+                <!-- ==========================================
+                     ÜBERGABEART
+                =========================================== -->
+
+                <div class="form-card">
+
+                    <h2>
+                        1. Wie möchtest du deine Spende übergeben?
+                    </h2>
+
+                    <div class="option-grid row g-3">
+
+                        <!-- GESCHÄFTSSTELLE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                class="option-card w-100 h-100"
+                            >
+
+                                <input
+                                    type="radio"
+                                    name="uebergabeart"
+                                    value="Geschäftsstelle"
+                                    required
+                                >
+
+                                <span class="option-content">
+
+                                    <span
+                                        class="option-icon"
+                                        aria-hidden="true"
+                                    >
+                                        🏢
+                                    </span>
+
+                                    <strong>
+                                        Übergabe an der Geschäftsstelle
+                                    </strong>
+
+                                    <small>
+
+                                        Ich bringe die Kleidung
+                                        persönlich zur Geschäftsstelle.
+
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- ABHOLUNG -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                class="option-card w-100 h-100"
+                            >
+
+                                <input
+                                    type="radio"
+                                    name="uebergabeart"
+                                    value="Abholung"
+                                >
+
+                                <span class="option-content">
+
+                                    <span
+                                        class="option-icon"
+                                        aria-hidden="true"
+                                    >
+                                        🚚
+                                    </span>
+
+                                    <strong>
+                                        Abholung
+                                    </strong>
+
+                                    <small>
+
+                                        Das Sammelfahrzeug soll die
+                                        Kleidung bei mir abholen.
+
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="uebergabeFehler"
+                        class="error-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     ABHOLADRESSE
+                =========================================== -->
+
+                <div
+                    class="form-card"
+                    id="abholadresseBereich"
+                    hidden
+                >
+
+                    <h2>
+                        2. Abholadresse
+                    </h2>
+
+                    <p class="form-hint">
+
+                        Eine Abholung ist nur möglich, wenn die ersten
+                        beiden Stellen der Postleitzahl mit dem Bereich
+                        der Geschäftsstelle (66) übereinstimmen.
+
+                    </p>
+
+
+                    <div class="row g-3">
+
+                        <!-- STRASSE -->
+
+                        <div class="col-md-8">
+
+                            <div class="form-group">
+
+                                <label for="strasse">
+                                    Straße und Hausnummer
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="strasse"
+                                    name="strasse"
+                                    class="form-control"
+                                    placeholder="z. B. Hauptstraße 12"
+                                    autocomplete="street-address"
+                                    aria-describedby="strasseFehler"
+                                >
+
+                                <div
+                                    id="strasseFehler"
+                                    class="error-message"
+                                    role="alert"
+                                    aria-live="polite"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PLZ -->
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+
+                                <label for="plz">
+                                    Postleitzahl
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="plz"
+                                    name="plz"
+                                    class="form-control"
+                                    maxlength="5"
+                                    inputmode="numeric"
+                                    pattern="[0-9]{5}"
+                                    placeholder="z. B. 66111"
+                                    autocomplete="postal-code"
+                                    aria-describedby="plzFehler"
+                                >
+
+                                <div
+                                    id="plzFehler"
+                                    class="error-message"
+                                    role="alert"
+                                    aria-live="polite"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ORT -->
+
+                        <div class="col-md-7">
+
+                            <div class="form-group">
+
+                                <label for="ort">
+                                    Ort
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="ort"
+                                    name="ort"
+                                    class="form-control"
+                                    placeholder="z. B. Musterstadt"
+                                    autocomplete="address-level2"
+                                    aria-describedby="ortFehler"
+                                >
+
+                                <div
+                                    id="ortFehler"
+                                    class="error-message"
+                                    role="alert"
+                                    aria-live="polite"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- E-MAIL -->
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    E-Mail-Adresse
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="z. B. name@beispiel.de"
+                                    autocomplete="email"
+                                    aria-describedby="emailFehler"
+                                >
+
+                                <div
+                                    id="emailFehler"
+                                    class="error-message"
+                                    role="alert"
+                                    aria-live="polite"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     ART DER KLEIDUNG
+                =========================================== -->
+
+                <div class="form-card">
+
+                    <h2>
+                        3. Art der Kleidung
+                    </h2>
+
+                    <div class="form-group">
+
+                        <label for="kleidung">
+                            Bitte auswählen
+                        </label>
+
+                        <select
+                            id="kleidung"
+                            name="kleidung"
+                            class="form-select"
+                            required
+                            aria-describedby="kleidungFehler"
+                        >
+
+                            <option value="">
+                                -- Bitte auswählen --
+                            </option>
+
+                            <option value="Erwachsenenkleidung">
+                                Erwachsenenkleidung
+                            </option>
+
+                            <option value="Kinderkleidung">
+                                Kinderkleidung
+                            </option>
+
+                            <option value="Winterkleidung">
+                                Winterkleidung
+                            </option>
+
+                            <option value="Schuhe">
+                                Schuhe
+                            </option>
+
+                            <option value="Jacken und Mäntel">
+                                Jacken und Mäntel
+                            </option>
+
+                            <option value="Sonstige Kleidung">
+                                Sonstige Kleidung
+                            </option>
+
+                        </select>
+
+                        <div
+                            id="kleidungFehler"
+                            class="error-message"
+                            role="alert"
+                            aria-live="polite"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     KRISENGEBIET
+                =========================================== -->
+
+                <div class="form-card">
+
+                    <h2>
+                        4. Aktuelles Krisengebiet
+                    </h2>
+
+                    <p class="form-hint">
+
+                        Wähle aus, in welche Krisenregion deine
+                        Spende versendet werden soll.
+
+                    </p>
+
+                    <div class="form-group">
+
+                        <label for="krisengebiet">
+                            Krisengebiet
+                        </label>
+
+                        <select
+                            id="krisengebiet"
+                            name="krisengebiet"
+                            class="form-select"
+                            required
+                            aria-describedby="krisenFehler"
+                        >
+
+                            <option value="">
+                                -- Bitte auswählen --
+                            </option>
+
+                            <option value="Ukraine">
+                                Ukraine
+                            </option>
+
+                            <option value="Gaza">
+                                Gaza
+                            </option>
+
+                            <option value="Sudan">
+                                Sudan
+                            </option>
+
+                            <option value="Syrien">
+                                Syrien
+                            </option>
+
+                        </select>
+
+                        <div
+                            id="krisenFehler"
+                            class="error-message"
+                            role="alert"
+                            aria-live="polite"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     ABSENDEN
+                =========================================== -->
+
+                <div class="form-submit">
+
+                    <button
+                        type="submit"
+                        class="button button-primary"
+                    >
+                        Spende registrieren
+                    </button>
+
+                    <p>
+
+                        Deine Angaben werden nur für die Registrierung
+                        dieser Spende verwendet.
+
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ==========================================
+     FOOTER
+=========================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <strong>
+                KleiderHilfe
+            </strong>
+
+            <p>
+                Gemeinnütziger Verein für Kleiderspenden.
+            </p>
+
+            <p>
+
+                KleiderHilfe e. V.<br>
+                Musterstraße 12<br>
+                66111 Musterstadt
+
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="impressum.html">
+                Impressum
+            </a>
+
+            <a href="datenschutz.html">
+                Datenschutz
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 KleiderHilfe – Alle Rechte vorbehalten.
+
+    </div>
+
+</footer>
+
+
+<!-- JavaScript -->
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
